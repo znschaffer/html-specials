@@ -1,6 +1,7 @@
 {
   "name": "html-special-generator",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "formik": "^2.2.9",
