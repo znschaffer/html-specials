@@ -5,7 +5,7 @@ stages:
   - deploy
 
 build:
-  image: node:latest    # Run the job in a `node` docker image
+  image: node:16.13.0    # Run the job in a `node` docker image
   stage: build
   script:
     - yarn install      # Run `yarn install` and `yarn build`
