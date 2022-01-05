@@ -39,21 +39,22 @@
 
 #generatedCodeContainer {
   display: flex;
-  margin:auto;
   flex-direction: column;
-  width: 70vw;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
 }
 xmp {
   margin:auto;
+  padding: 20px;
+  border: 1px black solid;
   font-size: small;
   background-color: #f9f9f9;
 }
 
 #generatedCodeContainer button {
   width: 200px;
+  margin-bottom: 20px;
 }
 
 .specialContainer {

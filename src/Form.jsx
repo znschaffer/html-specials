@@ -10,7 +10,7 @@ const SignupForm = () => {
     console.log(formData);
     let row1 = "";
     let row2 = "";
-  
+
     let offer1SingleContent = `
       <div className="row">
         <div className="col-xs-12 col-md-12 col-lg-12 vehicleOffer">
@@ -21,7 +21,7 @@ const SignupForm = () => {
           ${formData.offer1Bottom}
         </div>
       </div>`
-  
+
     if (formData.offer2) {
       row1 = `
         <div className="row">
@@ -43,8 +43,8 @@ const SignupForm = () => {
     } else {
       row1 = offer1SingleContent
     }
-  
-  
+
+
     let offer3SingleContent = `
       <div className="row">
         <div className="col-xs-12 col-md-12 col-lg-12 vehicleOffer">
@@ -56,7 +56,7 @@ const SignupForm = () => {
         </div>
       </div>
     `
-  
+
     if (formData.offer4) {
       row2 = `
         <div className="row">
@@ -168,12 +168,14 @@ const SignupForm = () => {
   };
   return (
     <>
-      {" "}
+
       <div
         style={{
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "flex-start",
+          margin: "20px",
+          gridGap: "10px"
         }}
       >
         <form
@@ -184,6 +186,8 @@ const SignupForm = () => {
             margin: "auto",
             width: "800px",
             justifyContent: "center",
+            padding: "20px",
+            border: "1px solid black"
           }}
         >
           <label htmlFor="headerTop">Header Top</label>
