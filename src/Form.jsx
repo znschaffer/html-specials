@@ -10,44 +10,75 @@ const SignupForm = () => {
     console.log(formData);
     let row1 = "";
     let row2 = "";
-    if (formData.offer1 || formData.offer2) {
-      row1 = `<div class="row">
-                <div class="col-xs-6 col-md-6 col-lg-6 vehicleOffer">
-                    ${formData.offer1Top}
-                    <br />
-                    <span>${formData.offer1Middle}</span>${formData.offer1MiddleSuffix}
-                    <br />
-                    ${formData.offer1Bottom}
-                </div>
-                <div class="col-xs-6 col-md-6 col-lg-6 vehicleOffer">
-                    ${formData.offer2Top}
-                    <br />
-                    <span>${formData.offer2Middle}</span>${formData.offer2MiddleSuffix}
-    
-                    <br />
-                    ${formData.offer2Bottom}
-                </div>
-            </div>`;
+  
+    let offer1SingleContent = `
+      <div className="row">
+        <div className="col-xs-12 col-md-12 col-lg-12 vehicleOffer">
+          ${formData.offer1Top}
+          <br />
+          <span>${formData.offer1Middle}</span>${formData.offer1MiddleSuffix}
+          <br />
+          ${formData.offer1Bottom}
+        </div>
+      </div>`
+  
+    if (formData.offer2) {
+      row1 = `
+        <div className="row">
+          <div className="col-xs-6 col-md-6 col-lg-6 vehicleOffer">
+            ${formData.offer1Top}
+            <br />
+            <span>${formData.offer1Middle}</span>${formData.offer1MiddleSuffix}
+            <br />
+            ${formData.offer1Bottom}
+          </div>
+          <div className="col-xs-6 col-md-6 col-lg-6 vehicleOffer">
+            ${formData.offer2Top}
+            <br />
+            <span>${formData.offer2Middle}</span>${formData.offer2MiddleSuffix}
+            <br />
+            ${formData.offer2Bottom}
+          </div>
+        </div>`
+    } else {
+      row1 = offer1SingleContent
     }
-    if (formData.offer3 || formData.offer4) {
-      row2 = `<div className="row">
-                    <div class="col-xs-6 col-md-6 col-lg-6 vehicleOffer">
-                        ${formData.offer3Top}
-                        <br />
-                        <span>${formData.offer3Middle}</span>
-                        ${formData.offer3MiddleSuffix}
-                        <br />
-                        ${formData.offer3Bottom}
-                    </div>
-                    <div class="col-xs-6 col-md-6 col-lg-6 vehicleOffer">
-                        ${formData.offer4Top}
-                        <br />
-                        <span>${formData.offer4Middle}</span>
-                        ${formData.offer4MiddleSuffix}
-                        <br />${formData.offer4Bottom}
-    
-                    </div>
-                </div>`;
+  
+  
+    let offer3SingleContent = `
+      <div className="row">
+        <div className="col-xs-12 col-md-12 col-lg-12 vehicleOffer">
+          ${formData.offer3Top}
+          <br />
+          <span>${formData.offer3Middle}</span>${formData.offer3MiddleSuffix}
+          <br />
+          ${formData.offer3Bottom}
+        </div>
+      </div>
+    `
+  
+    if (formData.offer4) {
+      row2 = `
+        <div className="row">
+          <div className="col-xs-6 col-md-6 col-lg-6 vehicleOffer">
+            ${formData.offer3Top}
+            <br />
+            <span>${formData.offer3Middle}</span>${formData.offer3MiddleSuffix}
+            <br />
+            ${formData.offer3Bottom}
+          </div>
+          <div className="col-xs-6 col-md-6 col-lg-6 vehicleOffer">
+            ${formData.offer4Top}
+            <br />
+            <span>${formData.offer4Middle}</span>${formData.offer4MiddleSuffix}
+            <br />
+            ${formData.offer4Bottom}
+          </div>
+        </div>`
+    } else if (formData.offer3) {
+      row2 = offer3SingleContent
+    } else {
+      row2 = ""
     }
     return `<div class="specialContainer">
                     <div class="container-fluid">
@@ -100,7 +131,6 @@ const SignupForm = () => {
     initialValues: {
       headerTop: "New 2021 Audi",
       headerBottom: "S4 Prestige Sedan",
-      offer1: false,
       offer1Top: "36 mo Lease",
       offer1Middle: "$499",
       offer1MiddleSuffix: "/mo",
@@ -172,50 +202,38 @@ const SignupForm = () => {
             onChange={formik.handleChange}
             value={formik.values.headerBottom}
           />
-          <label htmlFor="offer1">Offer #1?</label>
+          <label htmlFor="offer1Top">Offer #1 Top</label>
           <input
-            id="offer1"
-            name="offer1"
-            type="checkbox"
+            id="offer1Top"
+            name="offer1Top"
+            type="text"
             onChange={formik.handleChange}
-            value={formik.values.offer1}
+            value={formik.values.offer1Top}
           />
-          {formik.values.offer1 && (
-            <>
-              <label htmlFor="offer1Top">Offer #1 Top</label>
-              <input
-                id="offer1Top"
-                name="offer1Top"
-                type="text"
-                onChange={formik.handleChange}
-                value={formik.values.offer1Top}
-              />
-              <label htmlFor="offer1Middle">Offer #1 Middle</label>
-              <input
-                id="offer1Middle"
-                name="offer1Middle"
-                type="text"
-                onChange={formik.handleChange}
-                value={formik.values.offer1Middle}
-              />
-              <label htmlFor="offer1MiddleSuffix">Offer #1 Middle Suffix</label>
-              <input
-                id="offer1MiddleSuffix"
-                name="offer1MiddleSuffix"
-                type="text"
-                onChange={formik.handleChange}
-                value={formik.values.offer1MiddleSuffix}
-              />
-              <label htmlFor="offer1Bottom">Offer #1 Bottom</label>
-              <input
-                id="offer1Bottom"
-                name="offer1Bottom"
-                type="text"
-                onChange={formik.handleChange}
-                value={formik.values.offer1Bottom}
-              />
-            </>
-          )}
+          <label htmlFor="offer1Middle">Offer #1 Middle</label>
+          <input
+            id="offer1Middle"
+            name="offer1Middle"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.offer1Middle}
+          />
+          <label htmlFor="offer1MiddleSuffix">Offer #1 Middle Suffix</label>
+          <input
+            id="offer1MiddleSuffix"
+            name="offer1MiddleSuffix"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.offer1MiddleSuffix}
+          />
+          <label htmlFor="offer1Bottom">Offer #1 Bottom</label>
+          <input
+            id="offer1Bottom"
+            name="offer1Bottom"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.offer1Bottom}
+          />
           <label htmlFor="offer2">Offer #2?</label>
           <input
             id="offer2"
@@ -348,7 +366,23 @@ const SignupForm = () => {
               />
             </>
           )}
-
+          <label htmlFor="disclaimer">Disclaimer</label>
+          <textarea
+            id="disclaimer"
+            name="disclaimer"
+            cols={40}
+            rows={5}
+            onChange={formik.handleChange}
+            value={formik.values.disclaimer}
+          />
+          <label htmlFor="jellybeanImage">Jellybean Image</label>
+          <input
+            id="jellybeanImage"
+            name="jellybeanImage"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.jellybeanImage}
+          />
           <button type="submit">Generate</button>
         </form>
         <br />
