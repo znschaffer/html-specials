@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import Preview from "./Preview";
 import { useFormik } from "formik";
+import makes from "./data.json";
 
 const SignupForm = () => {
   // Pass the useFormik() hook initial form values and a submit function that will
@@ -123,14 +124,16 @@ const SignupForm = () => {
                         </div>
                     </div>
                 </div>`;
-
-    return "working on it : )";
   };
+
   const [generatedCode, setGeneratedCode] = useState("");
   const formik = useFormik({
     initialValues: {
       headerTop: "New 2021 Audi",
       headerBottom: "S4 Prestige Sedan",
+      make: "",
+      year: "",
+      model: "",
       offer1Top: "36 mo Lease",
       offer1Middle: "$499",
       offer1MiddleSuffix: "/mo",
@@ -168,7 +171,6 @@ const SignupForm = () => {
   };
   return (
     <>
-
       <div
         style={{
           display: "flex",
@@ -190,22 +192,39 @@ const SignupForm = () => {
             border: "1px solid black"
           }}
         >
-          <label htmlFor="headerTop">Header Top</label>
-          <input
-            id="headerTop"
-            name="headerTop"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.headerTop}
-          />
-          <label htmlFor="headerBottom">Header Bottom</label>
-          <input
-            id="headerBottom"
-            name="headerBottom"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.headerBottom}
-          />
+          <label htmlFor="make">Make</label>
+          <select
+            id="make"
+            name="make"
+            onChange={e => {
+              formik.handleChange(e)
+              formik.setFieldValue("year", Object.keys(makes[e.target.value])[0])
+              console.log(formik.values.year)
+              formik.setFieldValue("model", makes[e.target.value][Object.keys(makes[e.target.value])[0]][0])
+            }}
+            value={formik.values.make}>
+            {Object.keys(makes).map(make => (<option key={make}>{make}</option>))}
+          </select>
+          <label htmlFor="year">Year</label>
+          <select
+            id="year"
+            name="year"
+            onChange={e => {
+              console.log(e)
+              formik.handleChange(e)
+              formik.setFieldValue("model", makes[formik.values.make][e.target.value][0])
+            }}
+            value={formik.values.year}>
+            {formik.values.make != "" ? Object.keys(makes[formik.values.make]).map(year => (<option key={`${formik.values.make} - ${year}`}>{year}</option>)): (<option>Select A Make</option>)}
+          </select>
+          <label htmlFor="model">Model</label>
+          <select
+          id="model"
+          name="model"
+          onChange={formik.handleChange}
+          value={formik.values.model}>
+            {formik.values.year != "" ? makes[formik.values.make][formik.values.year].map(model => (<option key={model}>{model}</option>)) : (<option>Select A year</option>)}
+          </select>
           <label htmlFor="offer1Top">Offer #1 Top</label>
           <input
             id="offer1Top"

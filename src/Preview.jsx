@@ -85,9 +85,9 @@ const Preview = ({ formData }) => {
             <div className="col-xs-12 col-md-5 col-lg-5 offerBox">
               <center>
                 <h2>
-                  {formData.headerTop}
+                  New {formData.year} {formData.make}
                   <br />
-                  {formData.headerBottom}
+                  {formData.model}
                   <br />
                 </h2>
                 {row1}
