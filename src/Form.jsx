@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import Preview from "./Preview";
 import { useFormik } from "formik";
-import makes from "./data.json";
+import makes from "./makesAndModels.json";
 
 const SignupForm = () => {
   // Pass the useFormik() hook initial form values and a submit function that will
