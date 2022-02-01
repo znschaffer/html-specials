@@ -84,12 +84,22 @@ const Preview = ({ formData }) => {
           <div className="row">
             <div className="col-xs-12 col-md-5 col-lg-5 offerBox">
               <center>
-                <h2>
-                  New {formData.year} {formData.make}
+                {formData.manualEntryToggle ? <>
+                  <h2>
+                  New {formData.manualYear} {formData.manualMake}
                   <br />
-                  {formData.model}
+                  {formData.manualModel} {formData.trim}
                   <br />
                 </h2>
+                </> : <>
+                  <h2>
+                  New {formData.year} {formData.make}
+                  <br />
+                  {formData.model} {formData.trim}
+                  <br />
+                </h2>
+                </>}
+
                 {row1}
                 {row2}
                 <div className="row">
