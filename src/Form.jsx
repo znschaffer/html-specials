@@ -1,149 +1,145 @@
-import { React, useState } from "react";
+import { React, useState, } from "react";
+import ReactDOMServer from 'react-dom/server'
 import Preview from "./Preview";
 import { useFormik } from "formik";
 import makes from "./makesAndModels.json";
 
 const SignupForm = () => {
-  // Pass the useFormik() hook initial form values and a submit function that will
-  // be called when the form is submitted
-
   const generateHTML = (formData) => {
     console.log(formData);
-    let row1 = "";
-    let row2 = "";
+    let row1 = <></>;
+    let row2 = <></>;
 
-    let offer1SingleContent = `
+    let offer1SingleContent = (
       <div class="row">
         <div class="col-xs-12 col-md-12 col-lg-12 vehicleOffer">
-          ${formData.offer1Top}
+          {formData.offer1Top}
           <br />
-          <span>${formData.offer1Middle}</span>${formData.offer1MiddleSuffix}
+          <span>{formData.offer1Middle}</span>
+          {formData.offer1MiddleSuffix}
           <br />
-          ${formData.offer1Bottom}
+          {formData.offer1Bottom}
         </div>
-      </div>`;
+      </div>
+    );
 
     if (formData.offer2) {
-      row1 = `
+      row1 = (
         <div class="row">
           <div class="col-xs-6 col-md-6 col-lg-6 vehicleOffer">
-            ${formData.offer1Top}
+            {formData.offer1Top}
             <br />
-            <span>${formData.offer1Middle}</span>${formData.offer1MiddleSuffix}
+            <span>{formData.offer1Middle}</span>
+            {formData.offer1MiddleSuffix}
             <br />
-            ${formData.offer1Bottom}
+            {formData.offer1Bottom}
           </div>
           <div class="col-xs-6 col-md-6 col-lg-6 vehicleOffer">
-            ${formData.offer2Top}
+            {formData.offer2Top}
             <br />
-            <span>${formData.offer2Middle}</span>${formData.offer2MiddleSuffix}
+            <span>{formData.offer2Middle}</span>
+            {formData.offer2MiddleSuffix}
             <br />
-            ${formData.offer2Bottom}
+            {formData.offer2Bottom}
           </div>
-        </div>`;
+        </div>
+      );
     } else {
       row1 = offer1SingleContent;
     }
 
-    let offer3SingleContent = `
+    let offer3SingleContent = (
       <div class="row">
         <div class="col-xs-12 col-md-12 col-lg-12 vehicleOffer">
-          ${formData.offer3Top}
+          {formData.offer3Top}
           <br />
-          <span>${formData.offer3Middle}</span>${formData.offer3MiddleSuffix}
+          <span>{formData.offer3Middle}</span>
+          {formData.offer3MiddleSuffix}
           <br />
-          ${formData.offer3Bottom}
+          {formData.offer3Bottom}
         </div>
       </div>
-    `;
+    );
 
     if (formData.offer4) {
-      row2 = `
+      row2 = (
         <div class="row">
           <div class="col-xs-6 col-md-6 col-lg-6 vehicleOffer">
-            ${formData.offer3Top}
+            {formData.offer3Top}
             <br />
-            <span>${formData.offer3Middle}</span>${formData.offer3MiddleSuffix}
+            <span>{formData.offer3Middle}</span>
+            {formData.offer3MiddleSuffix}
             <br />
-            ${formData.offer3Bottom}
+            {formData.offer3Bottom}
           </div>
           <div class="col-xs-6 col-md-6 col-lg-6 vehicleOffer">
-            ${formData.offer4Top}
+            {formData.offer4Top}
             <br />
-            <span>${formData.offer4Middle}</span>${formData.offer4MiddleSuffix}
+            <span>{formData.offer4Middle}</span>
+            {formData.offer4MiddleSuffix}
             <br />
-            ${formData.offer4Bottom}
+            {formData.offer4Bottom}
           </div>
-        </div>`;
+        </div>
+      );
     } else if (formData.offer3) {
       row2 = offer3SingleContent;
     } else {
-      row2 = "";
+      row2 = <></>;
     }
-    return `<div class="specialContainer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-xs-12 col-md-5 col-lg-5 offerBox">
-                                <center>
-                                ${formData.manualEntryToggle ? ` 
-                                  <h2>
-                                  New ${formData.manualYear} ${formData.manualMake}
-                                  <br />
-                                  ${formData.manualModel} ${formData.trim}
-                                  <br />
-                                </h2>
-                                </> `: `
-                                  <h2>
-                                  New ${formData.year} ${formData.make}
-                                  <br />
-                                  ${formData.model} ${formData.trim}
-                                  <br />
-                                </h2>`
-                              }
-                                    ${row1}
-                                    ${row2}
-                                    <div class="row">
-                                        <a class="btn btn-primary" href="${formData.leftButtonLink}">
-                                            ${formData.leftButtonTitle}
-                                        </a>
-                                        <a class="btn btn-primary dialog" data-width="400" href="${formData.rightButtonLink}">
-                                            ${formData.rightButtonTitle}
-                                        </a>
-                                        <div class="truncatedDisclaimer">
-                                            <i class="disclaimerHover">
-                                                View Disclaimer
-                                            </i>
-                                            <div class="disclaimer-content flip-in-hor-top">
-                                                ${formData.disclaimer}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </center>
-                            </div>
-                            <div class="col-xs-12 col-md-7 col-lg-7 vehicleJellybean">
-                                <center>
-                                    <img src=${formData.jellybeanImage} />
-                                    <p></p>
-                                </center>
-                            </div>
-                        </div>
+    return (
+      <div class="specialContainer">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-12 col-md-5 col-lg-5 offerBox">
+              <center>
+                {formData.manualEntryToggle ? (
+                  <h2>
+                    New {formData.manualYear} {formData.manualMake}
+                    <br />
+                    {formData.manualModel} {formData.trim}
+                    <br />
+                  </h2>
+                ) : (
+                  <h2>
+                    New {formData.year} {formData.make}
+                    <br />
+                    {formData.model} {formData.trim}
+                    <br />
+                  </h2>
+                )}
+                {row1}
+                {row2}
+                <div class="row">
+                  <a class="btn btn-primary" href="${formData.leftButtonLink}">
+                    {formData.leftButtonTitle}
+                  </a>
+                  <a
+                    class="btn btn-primary dialog"
+                    data-width="400"
+                    href="${formData.rightButtonLink}"
+                  >
+                    {formData.rightButtonTitle}
+                  </a>
+                  <div class="truncatedDisclaimer">
+                    <i class="disclaimerHover">View Disclaimer</i>
+                    <div class="disclaimer-content flip-in-hor-top">
+                      {formData.disclaimer}
                     </div>
-                </div>`;
+                  </div>
+                </div>
+              </center>
+            </div>
+            <div class="col-xs-12 col-md-7 col-lg-7 vehicleJellybean">
+              <center>
+                <img src={formData.jellybeanImage} />
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   };
-
-  const [beautifiedCode, setBeautifiedCode] = useState("");
-  const apikey = "eIImf1T7l29aX2xMaVt8thGs3y87y8dIiC7wHSLR8IDcp"
-
-  function beautifyCode(generatedHTML) {
-    console.log(generatedHTML)
-    const url = new URL('https://api.dotmaui.com/client/1.0/htmlbeautify/')
-    const params = [['apikey', apikey], ['html', generatedHTML]]
-    url.search = new URLSearchParams(params).toString();
-    const formData = new URLSearchParams();
-    formData.append('apikey', apikey);
-    formData.append('html', generatedHTML);
-    fetch(url, {method: "POST"}).then((html) => console.log("run", html))
-  }
 
   const [generatedCode, setGeneratedCode] = useState("");
   const formik = useFormik({
@@ -183,18 +179,12 @@ const SignupForm = () => {
         "https://pictures.dealer.com/e/elrtraining25/0562/0671ae5d76a92002d24a1a2a3340ca76x.jpg",
     },
     onSubmit: (values) => {
-      // console.log(generateHTML(values).toString())
       // beautifyCode(generateHTML(values))
-      setGeneratedCode(generateHTML(values));
-
+      navigator.clipboard.writeText(ReactDOMServer.renderToStaticMarkup(
+        generateHTML(values)))
+      alert("Copied!");
     },
   });
-  console.log(formik.values.offer1);
-  const copyGeneratedCode = () => {
-    let xmp = document.getElementById("generatedCode");
-    navigator.clipboard.writeText(xmp.innerText);
-    alert("Copied!");
-  };
 
   const manualMake = (
     <>
@@ -335,14 +325,14 @@ const SignupForm = () => {
             makeYearModel
           )}
           <label htmlFor="trim">Trim</label>
-          <input 
+          <input
             id="trim"
             name="trim"
             type="text"
             onChange={formik.handleChange}
             value={formik.values.trim}
-            />
-          
+          />
+
           <label htmlFor="offer1Top">Offer #1 Top</label>
           <input
             id="offer1Top"
@@ -524,18 +514,12 @@ const SignupForm = () => {
             onChange={formik.handleChange}
             value={formik.values.jellybeanImage}
           />
-          <button type="submit">Generate</button>
+          <button type="submit">Generate + Copy</button>
         </form>
         <br />
         <Preview formData={formik.values} />
       </div>
-      <div id="generatedCodeContainer">
-        {generatedCode != "" && (
-          <button onClick={copyGeneratedCode}>Copy Generated Code</button>
-        )}
-
-        <xmp id="generatedCode">{generatedCode}</xmp>
-      </div>
+      
     </>
   );
 };
