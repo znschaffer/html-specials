@@ -111,13 +111,13 @@ const SignupForm = () => {
                 {row1}
                 {row2}
                 <div class="row">
-                  <a class="btn btn-primary" href="${formData.leftButtonLink}">
+                  <a class="btn btn-primary" href={formData.leftButtonLink}>
                     {formData.leftButtonTitle}
                   </a>
                   <a
                     class="btn btn-primary dialog"
                     data-width="400"
-                    href="${formData.rightButtonLink}"
+                    href={formData.rightButtonLink}
                   >
                     {formData.rightButtonTitle}
                   </a>
@@ -173,7 +173,7 @@ const SignupForm = () => {
       leftButtonTitle: "View Inventory",
       leftButtonLink: "",
       rightButtonTitle: "Claim Offer",
-      rightButtonLink: "",
+      rightButtonLink: "/contact-form.htm",
       disclaimer: "",
       jellybeanImage:
         "https://pictures.dealer.com/e/elrtraining25/0562/0671ae5d76a92002d24a1a2a3340ca76x.jpg",
@@ -497,6 +497,38 @@ const SignupForm = () => {
               />
             </>
           )}
+          <label htmlFor="leftButtonTitle">Left Button Title</label>
+          <input
+            id="leftButtonTitle"
+            name="leftButtonTitle"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.leftButtonTitle}
+            />
+          <label htmlFor="leftButtonLink">Left Button Link</label>
+          <input
+            id="leftButtonLink"
+            name="leftButtonLink"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.leftButtonLink}
+            />
+          <label htmlFor="rightButtonTitle">Right Button Title</label>
+          <input
+            id="rightButtonTitle"
+            name="rightButtonTitle"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.rightButtonTitle}
+            />
+          <label htmlFor="rightButtonLink">Right Button Link</label>
+          <input
+            id="rightButtonLink"
+            name="rightButtonLink"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.rightButtonLink}
+            />
           <label htmlFor="disclaimer">Disclaimer</label>
           <textarea
             id="disclaimer"
