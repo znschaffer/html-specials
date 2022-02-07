@@ -1,0 +1,215 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+details {
+  padding: 10px;
+}
+details * {
+  padding: 3px;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#generatedCodeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+xmp {
+  margin: auto;
+  padding: 20px;
+  border: 1px black solid;
+  font-size: small;
+  background-color: #f9f9f9;
+}
+
+#generatedCodeContainer button {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.specialContainer {
+  color: #fff;
+  padding: 3%;
+  font-size: 14px;
+  height: 34vw;
+  background: url("https://pictures.dealer.com/e/elrtraining20/1634/b19d28f80b5941480a9d9b22df7ad769x.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+}
+.specialContainer h2 {
+  font-size: 2.5em !important;
+  margin: 0px;
+}
+.specialContainer a {
+  width: 45%;
+  cursor: pointer;
+  margin: 1%;
+  font-size: 14px !important;
+}
+.offerBox {
+  background: rgba(0, 0, 0, 0.6);
+  margin-top: 0%;
+  padding: 2%;
+}
+.vehicleOffer {
+  padding: 1.5%;
+  line-height: 1.1;
+}
+.vehicleOffer span {
+  font-size: 3em;
+  font-weight: bold;
+}
+.oneOffer {
+  font-size: 16px;
+}
+.oneOffer span {
+  font-size: 3em;
+  font-weight: bold;
+}
+.vehicleJellybean img {
+  width: 100%;
+  position: relative;
+  top: 60px;
+}
+/* disclaimer */
+.truncatedDisclaimer {
+  position: relative;
+  display: inline-block;
+}
+.disclaimer-content {
+  display: none;
+  position: absolute;
+  left: -130px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  line-height: 0.99;
+  font-size: 0.75em;
+  color: #000;
+  width: 350px;
+}
+.truncatedDisclaimer:hover .disclaimer-content {
+  display: block;
+}
+/*-----------------------animation flip-in-hor-top ----------------------------------------*/
+.flip-in-hor-top {
+  -webkit-animation: flip-in-hor-top 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    both;
+  animation: flip-in-hor-top 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+@-webkit-keyframes flip-in-hor-top {
+  0% {
+    -webkit-transform: rotateX(-80deg);
+    transform: rotateX(-80deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+    opacity: 1;
+  }
+}
+@keyframes flip-in-hor-top {
+  0% {
+    -webkit-transform: rotateX(-80deg);
+    transform: rotateX(-80deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+    opacity: 1;
+  }
+}
+/* ----------   Media queries for mobile --------- */
+@media (max-width: 1180px) {
+  .specialContainer {
+    height: 40vw;
+  }
+  .offerBox {
+    margin-top: -1%;
+  }
+}
+@media (max-width: 980px) {
+  .specialContainer {
+    height: 95vw;
+  }
+  .offerBox {
+    margin-top: -1%;
+  }
+  .vehicleJellybean img {
+    width: 80%;
+    position: relative;
+    top: 30px;
+  }
+}
+@media (max-width: 515px) {
+  .specialContainer {
+    height: 150vw;
+  }
+  .vehicleJellybean img {
+    width: 100%;
+    position: relative;
+    top: 20px;
+  }
+  .specialContainer h2 {
+    font-size: 2em !important;
+    margin: 0px;
+  }
+}
+@media (max-width: 320px) {
+  .specialContainer {
+    height: 175vw;
+  }
+  .vehicleJellybean img {
+    width: 80%;
+    position: relative;
+    top: 10px;
+  }
+}
+
+label {
+  font-weight: 600;
+}
+
+input {
+  margin-bottom: 20px;
+}
