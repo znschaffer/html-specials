@@ -9,17 +9,17 @@ const OfferSelector = ({ updateOffers }) => {
       id: offers.length + 1,
       type: "callout",
       width: "6",
-      top: "Default Top",
-      bottom: "Default Bottom",
+      top: "Test Drive from Home",
+      bottom: "Delivered to Your Door",
     },
     apr: {
       id: offers.length + 1,
       type: "apr",
       width: "6",
-      top: "Default Top",
-      middle: "",
-      suffix: "",
-      bottom: "for 60 Months for Well-Qualified Buyers",
+      top: "Lease for",
+      middle: "$299",
+      suffix: "/mo",
+      bottom: "for 36 Months",
     },
   };
 
