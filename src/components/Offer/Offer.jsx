@@ -33,6 +33,10 @@ const Offer = ({ offer, updateOffers }) => {
               <input
                 name={input}
                 id={input}
+                type={input == "width" ? "range" : "text"}
+                min={"6"}
+                max={"12"}
+                step={"6"}
                 value={offer[input]}
                 onChange={handleChange}
               />
