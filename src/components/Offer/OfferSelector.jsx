@@ -3,17 +3,17 @@ import { useState } from "react";
 const OfferSelector = ({ updateOffers }) => {
   const [offers, setOffers] = updateOffers;
   const [type, setType] = useState("callout");
-
+  const offerID = offers.length == 0 ? 1 : offers[offers.length - 1].id + 1;
   const defaultTypes = {
     callout: {
-      id: offers.length + 1,
+      id: offerID,
       type: "callout",
       width: "6",
       top: "Test Drive from Home",
       bottom: "Delivered to Your Door",
     },
     apr: {
-      id: offers.length + 1,
+      id: offerID,
       type: "apr",
       width: "6",
       top: "Lease for",
