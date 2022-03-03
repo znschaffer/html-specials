@@ -18,10 +18,27 @@ function App() {
     },
   });
 
+  const [showExperimentalFeatures, setShowExperimentalFeatures] =
+    useState(false);
+
   console.log({ formData });
   return (
     <div style={{ maxWidth: "2000px", margin: "auto auto" }}>
-      <ParseSpreadsheet state={[formData, setFormData]} />
+      <label htmlFor="experimentalFeatures">Show Experimental Features?</label>
+      <input
+        name="experimentalFeatures"
+        type="checkbox"
+        value={showExperimentalFeatures}
+        onChange={(e) => {
+          setShowExperimentalFeatures(!showExperimentalFeatures);
+        }}
+      />
+      {showExperimentalFeatures ? (
+        <ParseSpreadsheet state={[formData, setFormData]} />
+      ) : (
+        <></>
+      )}
+
       <div
         style={{
           display: "flex",
