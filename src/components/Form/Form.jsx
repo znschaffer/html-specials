@@ -44,7 +44,7 @@ const Form = ({ state }) => {
       className="d-flex flex-column"
       style={{
         width: "500px",
-        margin: "auto auto",
+        marginLeft: "10px",
         border: "1px solid black",
         padding: "20px",
       }}

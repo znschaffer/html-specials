@@ -47,7 +47,7 @@ function App() {
         }}
       >
         <Form state={[formData, setFormData]} />
-        <div style={{ maxWidth: "2000px" }}>
+        <div style={{ maxWidth: "2000px", position: "sticky", top: "10px" }}>
           <Preview state={formData} />
         </div>
       </div>

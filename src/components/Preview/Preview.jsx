@@ -37,7 +37,7 @@ const Preview = ({ state }) => {
   };
 
   return (
-    <div class="d-flex flex-column" style={{ margin: "10px" }}>
+    <div class="d-flex flex-column" style={{ marginLeft: "10px", marginRight: "10px" }}>
       {preview}
       <button
         onClick={() => handleClick(preview)}
