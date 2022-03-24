@@ -20,7 +20,7 @@ const Form = ({ state }) => {
   const [jellybean, setJellybean] = useState({
     link: "https://cdn2.webdamdb.com/1280_seiSh5BUfxe71QDs.png?1631033777",
     scale: "0.8",
-    backgroundImage: "https://pictures.dealer.com/e/elrtraining20/0344/32628f009b06f28cb73ba2c86eab163bx.jpg"
+    backgroundImage: "https://pictures.dealer.com/e/elrtraining20/1634/b19d28f80b5941480a9d9b22df7ad769x.jpg"
   });
 
   useEffect(() => {
