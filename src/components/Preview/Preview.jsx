@@ -6,7 +6,7 @@ const Preview = ({ state }) => {
   const { vehicle, offers, cta, jellybean } = state;
   let preview = (
     <>
-      <div className="specialContainer" style={{ maxHeight: "600px" }}>
+      <div className="specialContainer" style={{ maxHeight: "600px", backgroundImage: `url("https://pictures.dealer.com/e/elrtraining20/0344/32628f009b06f28cb73ba2c86eab163bx.jpg")`, backgroundImage: `url("${jellybean.backgroundImage}")`}}>
         <div className="container-fluid">
           <div className="row">
             <div className="col-xs-12 col-md-5 col-lg-5 offerBox">
