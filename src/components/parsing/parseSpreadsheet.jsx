@@ -32,7 +32,7 @@ function ParseSpreadsheet({ state }) {
           .map((offer) => {
             return {
               id: offers.length + 1,
-              type: "callout",
+              type: "other",
               width: "6",
               top: offer.split("\r")[0],
               bottom: offer.split("\r")[1],

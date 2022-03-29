@@ -1,4 +1,4 @@
-const offerCalloutTemplate = (offer) => {
+const offerOtherTemplate = (offer) => {
   return (
     <div
       className={`col-xs-${offer.width} col-md-${offer.width} col-lg-${offer.width} vehicleOffer`}
@@ -6,6 +6,22 @@ const offerCalloutTemplate = (offer) => {
     >
       <br />
       <b>{offer.top}</b>
+      <br />
+      {offer.bottom}
+    </div>
+  );
+};
+// Lease/APR/MSRP/Callout
+// Cashback/Rebate
+const offerLeaseTemplate = (offer) => {
+  return (
+    <div
+      className={`col-xs-${offer.width} col-md-${offer.width} col-lg-${offer.width} vehicleOffer`}
+    >
+      {offer.top}
+      <br />
+      <span>{offer.middle}</span>
+      {offer.suffix}
       <br />
       {offer.bottom}
     </div>
@@ -29,10 +45,12 @@ const offerAprTemplate = (offer) => {
 
 const offerTemplate = (offer) => {
   switch (offer.type) {
-    case "callout":
-      return offerCalloutTemplate(offer);
+    case "other":
+      return offerOtherTemplate(offer);
     case "apr":
       return offerAprTemplate(offer);
+    case "lease":
+      return offerLeaseTemplate(offer);
     default:
       break;
   }
